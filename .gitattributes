@@ -1,0 +1,25 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+# Explicitly declare text files you want to always be normalized and converted
+# to native line endings on checkout.
+*.py text
+*.qml text
+*.qrc text
+*.js text
+*.json text
+*.txt text
+*.conf text
+*.md text
+.pylintrc text
+.style.yapf text
+.yapfignore text
+LICENCE text
+.gitattributes text
+.gitignore text
+.gitmodules text
+# Declare files that will always have CRLF line endings on checkout
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+# Declare files that will always have LF line endings on checkout
+*.sh text eol=lf
+*.command text eol=lf

@@ -1,0 +1,11 @@
+# Python byte code file
+__pycache__/
+*.pyc
+
+# Python venv
+.venv
+venv
+
+# vim files
+*.swp
+*.swo

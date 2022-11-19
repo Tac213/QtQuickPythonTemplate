@@ -1,0 +1,7 @@
+[style]
+based_on_style = google
+column_limit = 140
+allow_split_before_default_or_named_assigns = False
+indent_width = 4
+spaces_before_comment = 2
+use_tabs = false

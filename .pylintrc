@@ -1,0 +1,203 @@
+[MASTER]
+ignore=
+	style_rc.py,
+
+init-hook='import sys; sys.path.append("source")'
+
+[BASIC]
+
+# Good variable names which should always be accepted, separated by a comma
+good-names=i,
+           j,
+           k,
+           main,
+           _,
+           __,
+
+# Bad variable names which should always be refused, separated by a comma
+bad-names=foo,
+          bar,
+          baz,
+          toto,
+          tutu,
+          tata,
+
+# Colon-delimited sets of names that determine each other's naming style when
+# the name regexes allow several styles.
+name-group=
+
+# Include a hint for the correct naming format with invalid-name
+include-naming-hint=no
+
+# List of decorators that produce properties, such as abc.abstractproperty. Add
+# to this list to register other decorators that produce valid properties.
+property-classes=abc.abstractproperty,
+				 cached_property.cached_property,
+				 cached_property.threaded_cached_property,
+				 cached_property.cached_property_with_ttl,
+				 cached_property.threaded_cached_property_with_ttl
+
+# Naming style matching correct constant names
+# const-naming-style=UPPER_CASE
+
+# Regular expression matching correct constant names. Overrides const-naming-
+# style
+const-rgx=^(__author__|__version__|_reload_all|_{0,2}[A-Z][A-Z0-9_]*)$
+
+# Naming style matching correct variable names
+# variable-naming-style=snake_case
+# Regular expression matching correct variable names. Overrides variable-
+# naming-style
+variable-rgx=^(_{0,2}[a-z][a-z0-9_]*)$
+
+# Naming style matching correct function names
+# function-naming-style=snake_case
+
+# Regular expression matching correct function names. Overrides function-
+# naming-style
+function-rgx=^(_{0,2}[a-z][a-z0-9_]*)$
+
+# Naming style matching correct argument names
+# argument-naming-style=snake_case
+
+# Regular expression matching correct argument names. Overrides argument-
+# naming-style
+argument-rgx=^_{0,2}[a-z][a-z0-9_]*$
+
+# Naming style matching correct attribute names
+# attr-naming-style=snake_case
+
+# Regular expression matching correct attribute names. Overrides attr-naming-
+# style
+attr-rgx=^_{0,2}[a-z][a-z0-9_]*$
+
+# Naming style matching correct class attribute names
+# class-attribute-naming-style=any
+
+# Regular expression matching correct class attribute names. Overrides class-
+# attribute-naming-style
+class-attribute-rgx=^(__metaclass__|__slots__|_{0,2}[a-z][a-z0-9_]*)$
+
+# Naming style matching correct method names
+# method-naming-style=snake_case
+
+# Regular expression matching correct method names. Overrides method-naming-
+# style
+method-rgx=^(_{0,2}[a-z][a-z0-9_]*)$
+
+# Naming style matching correct class names
+# class-naming-style=PascalCase
+
+# Regular expression matching correct class names. Overrides class-naming-style
+class-rgx=^_{0,2}[A-Z][a-zA-Z0-9]*$
+
+# Naming style matching correct inline iteration names
+# inlinevar-naming-style=any
+
+# Regular expression matching correct inline iteration names. Overrides
+# inlinevar-naming-style
+inlinevar-rgx=^_{0,2}[a-z][a-z0-9_]*$
+
+# Naming style matching correct module names
+# module-naming-style=snake_case
+
+# Regular expression matching correct module names. Overrides module-naming-
+# style
+module-rgx=^(_?[a-z][a-z0-9_]*|__init__|__main__)$
+
+# Regular expression which should only match function or class names that do
+# not require a docstring.
+no-docstring-rgx=(__.*__|main|test.*|.*test|.*Test)$
+
+# Minimum line length for functions/classes that require docstrings, shorter
+# ones are exempt.
+docstring-min-length=10
+
+[FORMAT]
+
+# Regexp for a line that is allowed to be longer than the limit.
+ignore-long-lines=(?x)(
+  ^\s*(\#\ )?<?https?://\S+>?$|
+  ^\s*(from\s+\S+\s+)?import\s+.+$)
+
+# Number of spaces of indent required inside a hanging  or continued line.
+indent-after-paren=4
+
+# String used as indentation unit. This is usually "    " (4 spaces) or "\t" (1
+# tab).
+indent-string='    '
+
+# Maximum number of characters on a single line.
+max-line-length=140
+
+# Maximum number of lines in a module
+max-module-lines=99999
+
+# List of optional constructs for which whitespace checking is disabled. `dict-
+# separator` is used to allow tabulation in dicts, etc.: {1  : 1,\n222: 2}.
+# `trailing-comma` allows a space between comma and closing bracket: (a, ).
+# `empty-line` allows space-only lines.
+# no-space-check=
+
+# Allow the body of a class to be on the same line as the declaration if body
+# contains single statement.
+single-line-class-stmt=no
+
+# Allow the body of an if to be on the same line as the test if there is no
+# else.
+single-line-if-stmt=no
+
+[VARIABLES]
+
+# TODO(https://github.com/PyCQA/pylint/issues/1345): How does the inspection
+# not include "unused_" and "ignored_" by default?
+dummy-variables-rgx=^ignored_|^unused_|_
+
+[DESIGN]
+
+# NOTE(nathaniel): Not particularly attached to this value; it just seems to
+# be what works for us at the moment (excepting the dead-code-walking Beta
+# API).
+max-args=14
+max-parents=8
+
+[MISCELLANEOUS]
+
+# NOTE(nathaniel): We are big fans of "TODO(<issue link>): " and
+# "NOTE(<username or issue link>): ". We do not allow "TODO:",
+# "TODO(<username>):", "FIXME:", or anything else.
+notes=FIXME,TODO
+
+[MESSAGES CONTROL]
+
+disable=
+	duplicate-code,
+	missing-docstring,
+	# NOTE(nathaniel): In numeric comparisons it is better to have the
+	# lesser (or lesser-or-equal-to) quantity on the left when the
+	# expression is true than it is to worry about which is an identifier
+	# and which a literal value.
+	# misplaced-comparison-constant,
+	no-name-in-module,
+	# NOTE(nathaniel): Pylint and I will probably never agree on this.
+	too-few-public-methods,
+	# NOTE(nathaniel): Pylint and I wil probably never agree on this for
+	# private classes. For public classes maybe?
+	too-many-instance-attributes,
+	# NOTE(nathaniel): Some of our modules have a lot of lines... of
+	# specification and documentation. Maybe if this were
+	# lines-of-code-based we would use it.
+	too-many-lines,
+	# TODO(https://github.com/grpc/grpc/issues/261): Maybe we could have
+	# this one if we extracted just a few more helper functions...
+	too-many-nested-blocks,
+	# NOTE(nathaniel): A single statement that always returns program
+	# control is better than two statements the first of which sometimes
+	# returns program control and the second of which always returns
+	# program control. Probably generally, but definitely in the cases of
+	# if:/else: and for:/else:.
+	useless-else-on-loop,
+	# TODO(https://github.com/PyCQA/pylint/issues/3882): Upgrade Pylint
+	unsubscriptable-object,
+	unused-argument,
+	c-extension-no-member,

@@ -1,0 +1,15 @@
+astroid==2.12.12
+colorama==0.4.6
+dill==0.3.6
+isort==5.10.1
+lazy-object-proxy==1.8.0
+mccabe==0.7.0
+platformdirs==2.5.4
+pylint==2.15.6
+PySide6==6.4.0.1
+PySide6-Addons==6.4.0.1
+PySide6-Essentials==6.4.0.1
+shiboken6==6.4.0.1
+tomlkit==0.11.6
+wrapt==1.14.1
+yapf==0.32.0
