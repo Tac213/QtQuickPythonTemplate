@@ -42,7 +42,7 @@ property-classes=abc.abstractproperty,
 
 # Regular expression matching correct constant names. Overrides const-naming-
 # style
-const-rgx=^(__author__|__version__|_reload_all|_{0,2}[A-Z][A-Z0-9_]*)$
+const-rgx=^(__author__|__version__|_reload_all|_{0,2}[A-Z][A-Z0-9_]*|_{0,2}[a-z][a-z0-9_]*)$
 
 # Naming style matching correct variable names
 # variable-naming-style=snake_case
@@ -201,3 +201,5 @@ disable=
 	unsubscriptable-object,
 	unused-argument,
 	c-extension-no-member,
+	useless-object-inheritance,
+	global-statement,

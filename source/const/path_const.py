@@ -16,3 +16,6 @@ SOURCE_PATH = ROOT_PATH / 'source'
 
 VIEW_DIR = os.path.join(ROOT_DIR, 'view')
 VIEW_PATH = ROOT_PATH / 'view'
+
+LOG_DIR = os.path.join(ROOT_DIR, 'log')
+LOG_PATH = ROOT_PATH / 'log'

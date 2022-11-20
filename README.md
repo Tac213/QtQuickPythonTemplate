@@ -44,3 +44,10 @@ These extensions have been written in `.vscode/extensions.json`, you can also cl
 The next step is to select the interpreter under `.venv` folder as the development interpreter. Simply press `Ctrl + Shift + P`, then enter `Python: Select Interpreter` command.
 
 Finally, press `F5`. The application should be launched in debug mode.
+
+## Usage
+
+1. Clone or download this repository
+2. Rename the root folder
+3. Change the `APP_NAME` and `ORGANIZATION_NAME` variable in `source/const/app_const.py`
+4. Change the icon in `resouce/icon.jpg`

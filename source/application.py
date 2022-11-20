@@ -2,11 +2,12 @@
 # author: Tac
 # contact: cookiezhx@163.com
 
-import sys
 import argparse
 
 from PySide6 import QtCore, QtGui, QtQml
 
+import bridge
+import genv
 from const import app_const, path_const
 
 
@@ -15,11 +16,13 @@ def get_argument_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main(args) -> None:
+def main(args) -> int:
     """
     entry function
+    Args:
+        args: Argument parsed by get_argument_parser()
     Returns:
-        None
+        int, returncode of current process
     """
     QtGui.QGuiApplication.setAttribute(QtCore.Qt.ApplicationAttribute.AA_EnableHighDpiScaling)
     QtGui.QGuiApplication.setAttribute(QtCore.Qt.ApplicationAttribute.AA_UseHighDpiPixmaps)
@@ -31,9 +34,19 @@ def main(args) -> None:
 
     QtCore.QDir.setSearchPaths(app_const.RESOURCE_PREFIX, [path_const.RESOURCE_DIR])
     QtCore.QDir.setSearchPaths(app_const.VIEW_PREFIX, [path_const.VIEW_DIR])
+    app.setWindowIcon(QtGui.QIcon(app_const.APP_ICON))
 
-    engine = QtQml.QQmlApplicationEngine('view:/MainWindow.qml')
+    bridge.register_bridges()
+    bridge.initialize_bridge_objects()
+    genv.initialize()
+    engine = QtQml.QQmlApplicationEngine()
+    engine.rootContext().setContextProperties(bridge.get_bridge_objects())
+    engine.load('view:/MainWindow.qml')
     if not engine.rootObjects():
-        sys.exit(-1)
+        return -1
 
-    sys.exit(app.exec())
+    returncode = app.exec()
+    bridge.finalize_bridge_objects()
+    genv.finalize()
+
+    return returncode

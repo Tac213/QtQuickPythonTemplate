@@ -11,14 +11,14 @@ def check_python_path():
     source_folder = os.path.join(workspace_folder, 'source')
     if source_folder in sys.path:
         return
-    sys.path.insert(source_folder)
+    sys.path.insert(0, source_folder)
 
 
 def main():
     import application  # pylint: disable=import-outside-toplevel
 
     args = application.get_argument_parser().parse_args(sys.argv[1:])
-    application.main(args)
+    sys.exit(application.main(args))
 
 
 if __name__ == '__main__':

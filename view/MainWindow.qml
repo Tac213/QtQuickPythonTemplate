@@ -12,11 +12,36 @@ ApplicationWindow {
 
     menuBar: MenuBar {
         Menu {
-            title: qsTr("File")
+            title: qsTr("&File")
             MenuItem {
-                text: qsTr("Exit")
+                text: qsTr("&Exit")
                 onTriggered: Qt.quit()
             }
         }
+        Menu {
+            title: qsTr("&Developer")
+            MenuItem {
+                text: qsTr("&Toggle Console")
+                onTriggered: toggleConsoleWindow()
+            }
+        }
+    }
+
+    Item {
+        focus: true
+        Keys.onPressed: (event) => {
+            if (event.key === Qt.Key_QuoteLeft) {
+                toggleConsoleWindow();
+            }
+        }
+
+    }
+
+    OutputWindow {
+        id: consoleWindow
+    }
+
+    function toggleConsoleWindow() {
+        consoleWindow.visible = !consoleWindow.visible;
     }
 }

@@ -9,3 +9,7 @@ venv
 # vim files
 *.swp
 *.swo
+
+# log files
+log/
+*.log
