@@ -24,6 +24,10 @@ ApplicationWindow {
                 text: qsTr("&Toggle Console")
                 onTriggered: toggleConsoleWindow()
             }
+            // MenuItem {
+            //     text: qsTr("&Toggle JavaScript Console")
+            //     onTriggered: toggleJavaScriptConsoleWindow()
+            // }
         }
     }
 
@@ -41,7 +45,15 @@ ApplicationWindow {
         id: consoleWindow
     }
 
+    // JavaScriptConsole {
+    //     id: jsConsoleWindow
+    // }
+
     function toggleConsoleWindow() {
         consoleWindow.visible = !consoleWindow.visible;
     }
+
+    // function toggleJavaScriptConsoleWindow() {
+    //     jsConsoleWindow.visible = !jsConsoleWindow.visible;
+    // }
 }

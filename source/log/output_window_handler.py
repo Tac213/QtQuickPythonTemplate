@@ -23,9 +23,9 @@ class OutputWindowHandler(logging.Handler):
                 bridge.output_window_bridge_object.show_normal_message.emit(message)
         try:
             if record.levelno >= logging.ERROR:
-                sys.__stderr__.write(message + '\n')
+                sys.__stderr__.write(f'{message}\n')
             else:
-                sys.__stdout__.write(message + '\n')
+                sys.__stdout__.write(f'{message}\n')
             self.flush()
         except RecursionError as e:
             raise e

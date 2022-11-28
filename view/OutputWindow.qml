@@ -4,14 +4,20 @@ import QtQuick.Layouts
 import Python.InteractiveInterpreter
 import "OutputWindowComponents" as OutputWindowComponents
 import "CommonComponents" as CommonComponents
+import "script/js-console.js" as Util
 
 Window {
     id: root
+    enum ConsoleType {
+        Python,
+        JavaScript
+    }
 
     title: qsTr("Console")
     width: 640
     height: 480
     visible: false
+    property var consoleType: OutputWindow.ConsoleType.Python
 
     ColumnLayout {
         anchors.fill: parent
@@ -107,15 +113,33 @@ Window {
             Layout.fillWidth: true
             Layout.fillHeight: true
         }
-        CommonComponents.HistoryRollbackTextField {
-            id: consoleInput
+        RowLayout {
             Layout.fillWidth: true
-            placeholderText: "input python code to debug..."
-            onAccepted: () => {
-                const script = this.text.trim();
-                root.showNormalMessage(`>>> ${script}`);
-                interactiveInterpreter.interpret_script(script);
-                this.text = '';
+            Button {
+                id: changeConsoleTypeButton
+                display: AbstractButton.TextOnly
+                text: root.consoleType === OutputWindow.ConsoleType.Python ? "Python" : "JavaScript"
+                onClicked: () => {
+                    consoleTypeMenu.popup();
+                }
+            }
+            CommonComponents.HistoryRollbackTextField {
+                id: consoleInput
+                Layout.fillWidth: true
+                placeholderText: root.consoleType === OutputWindow.ConsoleType.Python ? "input Python code to debug..." : "input JavaScript code to debug..."
+                onAccepted: () => {
+                    const script = this.text.trim();
+                    if (root.consoleType === OutputWindow.ConsoleType.Python) {
+                        root.showNormalMessage(`>>> ${script}`);
+                        interactiveInterpreter.interpret_script(script);
+                    } else if (root.consoleType === OutputWindow.ConsoleType.JavaScript) {
+                        root.showNormalMessage(`> ${script}`);
+                        Util.call(script)
+                    } else {
+                        console.error(`Unknown console type: ${root.consoleType}, cannot execute script: ${script}`);
+                    }
+                    this.text = '';
+                }
             }
         }
     }
@@ -153,7 +177,7 @@ Window {
         text: qsTr("Normal")
         checkable: true
         checked: true
-        onTriggered: (source) => {
+        onTriggered: () => {
             handleMessageTypeFilter();
         }
     }
@@ -173,6 +197,21 @@ Window {
         checked: true
         onTriggered: () => {
             handleMessageTypeFilter();
+        }
+    }
+    Menu {
+        id: consoleTypeMenu
+        MenuItem {
+            text: qsTr("Python")
+            onTriggered: () => {
+                changeConsoleType(OutputWindow.ConsoleType.Python);
+            }
+        }
+        MenuItem {
+            text: qsTr("JavaScript")
+            onTriggered: () => {
+                changeConsoleType(OutputWindow.ConsoleType.JavaScript);
+            }
         }
     }
 
@@ -204,6 +243,10 @@ Window {
             msgType |= OutputWindowComponents.OutputTextControl.MessageType.Error;
         }
         outputText.setCurrentMessageType(msgType);
+    }
+
+    function changeConsoleType(consoleType) {
+        this.consoleType = consoleType;
     }
 
 }

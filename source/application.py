@@ -9,6 +9,7 @@ from PySide6 import QtCore, QtGui, QtQml
 import bridge
 import genv
 from const import app_const, path_const
+from log import qt_message_handler
 
 
 def get_argument_parser() -> argparse.ArgumentParser:
@@ -24,6 +25,7 @@ def main(args) -> int:
     Returns:
         int, returncode of current process
     """
+    QtCore.qInstallMessageHandler(qt_message_handler.handler)
     QtGui.QGuiApplication.setAttribute(QtCore.Qt.ApplicationAttribute.AA_EnableHighDpiScaling)
     QtGui.QGuiApplication.setAttribute(QtCore.Qt.ApplicationAttribute.AA_UseHighDpiPixmaps)
     app = QtGui.QGuiApplication()

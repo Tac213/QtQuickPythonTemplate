@@ -20,6 +20,11 @@
   "python.analysis.typeCheckingMode": "off",
   "python.analysis.extraPaths": ["source"],
   "[python]": {
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   }
 }

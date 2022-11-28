@@ -11,5 +11,4 @@ venv
 *.swo
 
 # log files
-log/
 *.log
