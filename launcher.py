@@ -7,6 +7,8 @@ import os
 
 
 def check_python_path():
+    if getattr(sys, 'frozen', False):
+        return
     workspace_folder = os.path.dirname(__file__)
     source_folder = os.path.join(workspace_folder, 'source')
     if source_folder in sys.path:

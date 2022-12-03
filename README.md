@@ -4,8 +4,8 @@ A Template repository for QtQuick Python.
 
 ## Prerequisites
 
-- Git 2.32 (or more recent)
-- Python 3.11.0 (or more recent)
+-   Git 2.32 (or more recent)
+-   Python 3.11.0 (or more recent)
 
 ## Setup Development Environment
 
@@ -35,9 +35,9 @@ code .
 
 After opening the folder, install the following extensions:
 
-- [ms-python.python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-- [ms-python.vscode-pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
-- [seanwu.vscode-qt-for-python](https://marketplace.visualstudio.com/items?itemName=seanwu.vscode-qt-for-python)
+-   [ms-python.python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+-   [ms-python.vscode-pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
+-   [seanwu.vscode-qt-for-python](https://marketplace.visualstudio.com/items?itemName=seanwu.vscode-qt-for-python)
 
 These extensions have been written in `.vscode/extensions.json`, you can also click `Yes` when VSCode ask you whether to install the recommended extensions, which makes it easier to install all the above extensions.
 
@@ -51,3 +51,4 @@ Finally, press `F5`. The application should be launched in debug mode.
 2. Rename the root folder
 3. Change the `APP_NAME` and `ORGANIZATION_NAME` variable in `source/const/app_const.py`
 4. Change the icon in `resouce/icon.jpg`
+5. Upgrade dependencies: PySide6, pylint, yapf, pyinstaller

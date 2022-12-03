@@ -2,7 +2,7 @@
 # author: Tac
 # contact: cookiezhx@163.com
 
-import sys
+import logging
 import enum
 
 import bridge
@@ -16,19 +16,21 @@ class ChannelType(enum.Enum):
 
 class MockStdout(object):
     """
-    Mock stdout to write output string to output window
+    Mock stdout to write output string to output window and file
     """
 
-    def __init__(self, channel: ChannelType, origin) -> None:
+    def __init__(self, channel: ChannelType, origin, file_handler: logging.FileHandler) -> None:
         self.channel = channel
         self.origin = origin
+        self._file_handler = file_handler
         self._buffer = ''
 
     def __getattr__(self, attr_name: str):
         return object.__getattribute__(self.origin, attr_name)
 
     def write(self, text):
-        self.origin.write(text)
+        if self.origin:
+            self.origin.write(text)
 
         self._buffer += text
         if self._buffer.endswith('\n'):
@@ -38,8 +40,7 @@ class MockStdout(object):
                     bridge.output_window_bridge_object.show_normal_message.emit(self._buffer)
                 else:
                     bridge.output_window_bridge_object.show_error_message.emit(self._buffer)
+            self._file_handler.emit(
+                logging.LogRecord('std', logging.INFO if self.channel == ChannelType.STDOUT else logging.ERROR, '', 0, self._buffer, (),
+                                  None))
             self._buffer = ''
-
-
-sys.stdout = MockStdout(ChannelType.STDOUT, sys.__stdout__)
-sys.stderr = MockStdout(ChannelType.STDERR, sys.__stderr__)

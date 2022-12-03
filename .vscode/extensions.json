@@ -1,8 +1,8 @@
 {
-  "recommendations": [
-    "ms-python.python",
-    "ms-python.vscode-pylance",
-    "seanwu.vscode-qt-for-python",
-    "esbenp.prettier-vscode"
-  ]
+    "recommendations": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "seanwu.vscode-qt-for-python",
+        "esbenp.prettier-vscode"
+    ]
 }

@@ -30,7 +30,7 @@ Window {
                     display: AbstractButton.IconOnly
                     implicitWidth: 28
                     icon {
-                        source: "resource:/svg/filter.svg"
+                        source: "qrc:/resource/svg/filter.svg"
                     }
                     ToolTip {
                         visible: parent.hovered
@@ -47,7 +47,7 @@ Window {
                     display: AbstractButton.IconOnly
                     implicitWidth: 28
                     icon {
-                        source: "resource:/svg/clear.svg"
+                        source: "qrc:/resource/svg/clear.svg"
                     }
                     ToolTip {
                         visible: parent.hovered
@@ -77,7 +77,7 @@ Window {
                     display: AbstractButton.IconOnly
                     implicitWidth: 28
                     icon {
-                        source: "resource:/svg/dropup.svg"
+                        source: "qrc:/resource/svg/dropup.svg"
                     }
                     ToolTip {
                         visible: parent.hovered
@@ -94,7 +94,7 @@ Window {
                     display: AbstractButton.IconOnly
                     implicitWidth: 28
                     icon {
-                        source: "resource:/svg/dropdown.svg"
+                        source: "qrc:/resource/svg/dropdown.svg"
                     }
                     ToolTip {
                         visible: parent.hovered

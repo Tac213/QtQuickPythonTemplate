@@ -1,0 +1,68 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Deploy(Release)",
+            "type": "process",
+            "command": "${workspaceFolder}/.venv/bin/python",
+            "windows": {
+                "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+            },
+            "args": ["deployment/deploy.py"],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Deploy(Debug)",
+            "type": "process",
+            "command": "${workspaceFolder}/.venv/bin/python",
+            "windows": {
+                "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+            },
+            "args": ["deployment/deploy.py", "--variant", "debug"],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Compile Qt Resource",
+            "type": "process",
+            "command": "${workspaceFolder}/.venv/bin/python",
+            "windows": {
+                "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
+            },
+            "args": ["deployment/resource_compiler.py"],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PYTHONPATH": "${workspaceFolder}/source"
+                }
+            }
+        }
+    ]
+}

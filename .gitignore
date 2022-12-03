@@ -12,3 +12,11 @@ venv
 
 # log files
 *.log
+
+# deployment files
+deployment/build/
+deployment/dist/
+
+# auto-generated resource files
+resource_view.qrc
+resource_view_rc.py

@@ -3,8 +3,12 @@
 # contact: cookiezhx@163.com
 
 import sys
+import logging
+
 from PySide6 import QtCore
+
 import bridge
+from . import log_manager
 
 
 def handler(mode: QtCore.QtMsgType, context: QtCore.QMessageLogContext, message: str) -> None:
@@ -18,6 +22,12 @@ def handler(mode: QtCore.QtMsgType, context: QtCore.QMessageLogContext, message:
         elif mode in (QtCore.QtMsgType.QtCriticalMsg, QtCore.QtMsgType.QtFatalMsg):
             bridge.output_window_bridge_object.show_error_message.emit(formatted_message)
     if mode in (QtCore.QtMsgType.QtDebugMsg, QtCore.QtMsgType.QtInfoMsg):
-        sys.__stdout__.write(f'{formatted_message}\n')
+        if sys.__stdout__:
+            sys.__stdout__.write(f'{formatted_message}\n')
+        if log_manager.LogManager.file_handler:
+            log_manager.LogManager.file_handler.emit(logging.LogRecord('qt', logging.INFO, '', 0, formatted_message, (), None))
     else:
-        sys.__stderr__.write(f'{formatted_message}\n')
+        if sys.__stderr__:
+            sys.__stderr__.write(f'{formatted_message}\n')
+        if log_manager.LogManager.file_handler:
+            log_manager.LogManager.file_handler.emit(logging.LogRecord('qt', logging.ERROR, '', 0, formatted_message, (), None))

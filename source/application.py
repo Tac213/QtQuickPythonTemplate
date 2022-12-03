@@ -8,8 +8,9 @@ from PySide6 import QtCore, QtGui, QtQml
 
 import bridge
 import genv
-from const import app_const, path_const
+from const import app_const
 from log import qt_message_handler
+import resource_view_rc  # pylint: disable=import-error,unused-import
 
 
 def get_argument_parser() -> argparse.ArgumentParser:
@@ -33,9 +34,6 @@ def main(args) -> int:
     app.setApplicationDisplayName(app_const.APP_NAME)
     app.setDesktopFileName(app_const.APP_NAME)
     app.setOrganizationName(app_const.ORGANIZATION_NAME)
-
-    QtCore.QDir.setSearchPaths(app_const.RESOURCE_PREFIX, [path_const.RESOURCE_DIR])
-    QtCore.QDir.setSearchPaths(app_const.VIEW_PREFIX, [path_const.VIEW_DIR])
     app.setWindowIcon(QtGui.QIcon(app_const.APP_ICON))
 
     bridge.register_bridges()
@@ -43,7 +41,7 @@ def main(args) -> int:
     genv.initialize()
     engine = QtQml.QQmlApplicationEngine()
     engine.rootContext().setContextProperties(bridge.get_bridge_objects())
-    engine.load('view:/MainWindow.qml')
+    engine.load(':/view/MainWindow.qml')
     if not engine.rootObjects():
         return -1
 

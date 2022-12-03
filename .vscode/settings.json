@@ -1,30 +1,31 @@
 {
-  "files.associations": {
-    ".style.yapf": "ini"
-  },
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "**/Thumbs.db": true,
-    "**/.venv": true,
-    "**/venv": true,
-    "**/__pycache__": true
-  },
-  "python.formatting.provider": "yapf",
-  "python.linting.flake8Enabled": false,
-  "python.linting.pylintEnabled": true,
-  "python.linting.enabled": true,
-  "python.analysis.typeCheckingMode": "off",
-  "python.analysis.extraPaths": ["source"],
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.python",
-    "editor.formatOnSave": true
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  }
+    "files.associations": {
+        ".style.yapf": "ini",
+        "**.spec": "python"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/.venv": true,
+        "**/venv": true,
+        "**/__pycache__": true
+    },
+    "python.formatting.provider": "yapf",
+    "python.linting.flake8Enabled": false,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.analysis.typeCheckingMode": "off",
+    "python.analysis.extraPaths": ["source", "deployment"],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python",
+        "editor.formatOnSave": true
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    }
 }

@@ -29,7 +29,7 @@ RowLayout {
         display: AbstractButton.IconOnly
         implicitWidth: 28
         icon {
-            source: "resource:/svg/search.svg"
+            source: "qrc:/resource/svg/search.svg"
         }
         ToolTip {
             visible: parent.hovered
