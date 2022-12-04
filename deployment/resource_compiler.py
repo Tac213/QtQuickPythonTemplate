@@ -10,6 +10,7 @@ import deploy_utils
 
 QRC_FILE_NAME = 'resource_view.qrc'
 PY_RC_FILE_NAME = 'resource_view_rc.py'
+QT_QUICK_CONTROLS_CONF_FILE_NAME = 'qtquickcontrols2.conf'
 EXCLUDE_DIR_NAMES = (
     '.git',
     '.svn',
@@ -25,6 +26,7 @@ EXCLUDE_EXTS = (
 def generate_qrc_file():
     from const import app_const, path_const  # pylint: disable=import-outside-toplevel
     import deploy_env  # pylint: disable=import-outside-toplevel
+    qt_quick_controls_conf_file_relpath = ''
     content = '<!DOCTYPE RCC><RCC version="1.0">\n'
 
     content += f'<qresource prefix="{app_const.RESOURCE_PREFIX}">\n'
@@ -36,6 +38,9 @@ def generate_qrc_file():
                 continue
             file_path = os.path.join(root, file_name)
             file_relpath = os.path.relpath(file_path, deploy_env.root_path).replace(os.path.sep, '/')
+            if file_name == QT_QUICK_CONTROLS_CONF_FILE_NAME:
+                qt_quick_controls_conf_file_relpath = file_relpath
+                continue
             alias = os.path.relpath(file_path, path_const.RESOURCE_DIR).replace(os.path.sep, '/')
             content += f'    <file alias="{alias}">{file_relpath}</file>\n'
     content += '</qresource>\n'
@@ -49,9 +54,17 @@ def generate_qrc_file():
                 continue
             file_path = os.path.join(root, file_name)
             file_relpath = os.path.relpath(file_path, deploy_env.root_path).replace(os.path.sep, '/')
+            if file_name == QT_QUICK_CONTROLS_CONF_FILE_NAME:
+                qt_quick_controls_conf_file_relpath = file_relpath
+                continue
             alias = os.path.relpath(file_path, path_const.VIEW_DIR).replace(os.path.sep, '/')
             content += f'    <file alias="{alias}">{file_relpath}</file>\n'
     content += '</qresource>\n'
+
+    if qt_quick_controls_conf_file_relpath:
+        content += '<qresource prefix="/">\n'
+        content += f'    <file alias="{QT_QUICK_CONTROLS_CONF_FILE_NAME}">{qt_quick_controls_conf_file_relpath}</file>\n'
+        content += '</qresource>\n'
 
     content += '</RCC>\n'
 
