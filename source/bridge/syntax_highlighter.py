@@ -21,7 +21,7 @@ QML_IMPORT_MINOR_VERSION = 0
 class SyntaxHighlighter(QtGui.QSyntaxHighlighter):
 
     text_document_changed = QtCore.Signal(name='textDocumentChanged')
-    highlight_block = QtCore.Signal(name='pyHighlightBlock')
+    py_highlight_block = QtCore.Signal(name='pyHighlightBlock')
 
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
@@ -34,11 +34,11 @@ class SyntaxHighlighter(QtGui.QSyntaxHighlighter):
         if self._text_document is text_document:
             return
         self._text_document = text_document
-        self.setDocument(text_document.textDocument())
+        self.set_document(text_document.text_document())
         self.text_document_changed.emit()
 
     text_document = QtCore.Property(object, get_text_document, set_text_document, notify=text_document_changed)
 
-    def highlightBlock(self, text: str) -> None:  # pylint: disable=invalid-name
-        super().highlightBlock(text)
-        self.highlight_block.emit()
+    def highlight_block(self, text: str) -> None:
+        super().highlight_block(text)
+        self.py_highlight_block.emit()

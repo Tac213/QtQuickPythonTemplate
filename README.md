@@ -26,7 +26,11 @@ source .venv/bin/activate
 # .venv\Scripts\Activate.ps1
 # for Winows Git Bash, run the following command to activate venv
 # source .venv/Scripts/activate
+
+# install site-packages
 pip3 install -r requirements.txt
+# generate snake_case and true_property pyi for VSCode
+pyside6-genpyi all --feature snake_case true_property
 # deactivate venv
 deactivate
 # open current folder using VSCode

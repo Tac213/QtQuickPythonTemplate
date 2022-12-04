@@ -43,4 +43,4 @@ def get_bridge_objects():
 
 def finalize_bridge_objects() -> None:
     if output_window_bridge_object:
-        output_window_bridge_object.deleteLater()
+        output_window_bridge_object.delete_later()

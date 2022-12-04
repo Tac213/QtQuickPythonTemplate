@@ -5,6 +5,7 @@
 import argparse
 
 from PySide6 import QtCore, QtGui, QtQml
+from __feature__ import snake_case, true_property  # pylint: disable=import-error,unused-import
 
 import bridge
 import genv
@@ -27,22 +28,22 @@ def main(args) -> int:
         int, returncode of current process
     """
     QtCore.qInstallMessageHandler(qt_message_handler.handler)
-    QtGui.QGuiApplication.setAttribute(QtCore.Qt.ApplicationAttribute.AA_EnableHighDpiScaling)
-    QtGui.QGuiApplication.setAttribute(QtCore.Qt.ApplicationAttribute.AA_UseHighDpiPixmaps)
+    QtGui.QGuiApplication.set_attribute(QtCore.Qt.ApplicationAttribute.AA_EnableHighDpiScaling)
+    QtGui.QGuiApplication.set_attribute(QtCore.Qt.ApplicationAttribute.AA_UseHighDpiPixmaps)
     app = QtGui.QGuiApplication()
-    app.setApplicationName(app_const.APP_NAME)
-    app.setApplicationDisplayName(app_const.APP_NAME)
-    app.setDesktopFileName(app_const.APP_NAME)
-    app.setOrganizationName(app_const.ORGANIZATION_NAME)
-    app.setWindowIcon(QtGui.QIcon(app_const.APP_ICON))
+    app.application_name = app_const.APP_NAME
+    app.application_display_name = app_const.APP_NAME
+    app.desktop_file_name = app_const.APP_NAME
+    app.organization_name = app_const.ORGANIZATION_NAME
+    app.window_icon = QtGui.QIcon(app_const.APP_ICON)
 
     bridge.register_bridges()
     bridge.initialize_bridge_objects()
     genv.initialize()
     engine = QtQml.QQmlApplicationEngine()
-    engine.rootContext().setContextProperties(bridge.get_bridge_objects())
+    engine.root_context().set_context_properties(bridge.get_bridge_objects())
     engine.load(':/view/MainWindow.qml')
-    if not engine.rootObjects():
+    if not engine.root_objects():
         return -1
 
     returncode = app.exec()
