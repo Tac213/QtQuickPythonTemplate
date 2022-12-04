@@ -38,6 +38,7 @@ After opening the folder, install the following extensions:
 -   [ms-python.python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 -   [ms-python.vscode-pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
 -   [seanwu.vscode-qt-for-python](https://marketplace.visualstudio.com/items?itemName=seanwu.vscode-qt-for-python)
+-   [esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
 These extensions have been written in `.vscode/extensions.json`, you can also click `Yes` when VSCode ask you whether to install the recommended extensions, which makes it easier to install all the above extensions.
 
@@ -50,5 +51,13 @@ Finally, press `F5`. The application should be launched in debug mode.
 1. Clone or download this repository
 2. Rename the root folder
 3. Change the `APP_NAME` and `ORGANIZATION_NAME` variable in `source/const/app_const.py`
-4. Change the icon in `resouce/icon.jpg`
+4. Change the icon in `resouce/icon.jpg`, change it to a `.ico` format icon will be better(for deployment)
 5. Upgrade dependencies: PySide6, pylint, yapf, pyinstaller
+
+## Deployment
+
+The major 3 operate systems: Windows, MacOS, Linux(Ubuntu / Debian), is supported.
+
+To deploy the application, simply press `Ctrl + P` in VSCode, then enter `task Deploy(Release)`. If the task is performed successfully, the application will be deployed under: `${workspaceFolder}/deployment/dist`.
+
+See spec files under `${workspaceFolder}/deployment/spec` for more information.
