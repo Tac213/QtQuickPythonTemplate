@@ -50,7 +50,7 @@ def get_shading_language_args() -> list:
     elif graphics_api == QtQuick.QSGRendererInterface.GraphicsApi.Metal:
         shading_language_args.extend(('--msl', '12'))
     elif graphics_api == QtQuick.QSGRendererInterface.GraphicsApi.OpenGL:
-        shading_language_args.extend(('--glsl', '"310es,430"'))
+        shading_language_args.extend(('--glsl', '310es,430'))
     return shading_language_args
 
 
