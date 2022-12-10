@@ -27,5 +27,8 @@
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true
+    },
+    "triggerTaskOnSave.tasks": {
+        "Format current qml file": ["*.qml"]
     }
 }

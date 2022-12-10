@@ -9,6 +9,7 @@
 *.json text
 *.txt text
 *.conf text
+*.ini text
 *.md text
 *.vert text
 *.frag text

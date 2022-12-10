@@ -6,7 +6,7 @@ TextField {
     property var history: [""]
     property int historyIndex: 0
     property int stackSize: 100
-    Keys.onPressed: (event) => {
+    Keys.onPressed: event => {
         if (event.key === Qt.Key_Up) {
             if (this.history.length === 0) {
                 this.history[0] = this.text;

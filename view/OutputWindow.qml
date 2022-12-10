@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import Python.InteractiveInterpreter
+import Python.InteractiveInterpreter  // qmllint disable import
 import "OutputWindowComponents" as OutputWindowComponents
 import "CommonComponents" as CommonComponents
 import "script/js-console.js" as Util
@@ -33,7 +33,7 @@ Window {
                         source: "qrc:/resource/svg/filter.svg"
                     }
                     ToolTip {
-                        visible: parent.hovered
+                        visible: parent.hovered  // qmllint disable type
                         text: qsTr("show output type menu")
                         delay: 1000
                         timeout: 5000
@@ -50,7 +50,7 @@ Window {
                         source: "qrc:/resource/svg/clear.svg"
                     }
                     ToolTip {
-                        visible: parent.hovered
+                        visible: parent.hovered  // qmllint disable type
                         text: qsTr("clear output window")
                         delay: 1000
                         timeout: 5000
@@ -62,7 +62,7 @@ Window {
                 OutputWindowComponents.FindControl {
                     id: findWidget
                     Layout.fillWidth: true
-                    onFindTextChanged: (text) => {
+                    onFindTextChanged: text => {
                         outputText.findText(text);
                     }
                     onPrevClicked: () => {
@@ -80,7 +80,7 @@ Window {
                         source: "qrc:/resource/svg/dropup.svg"
                     }
                     ToolTip {
-                        visible: parent.hovered
+                        visible: parent.hovered  // qmllint disable type
                         text: qsTr("previous match")
                         delay: 1000
                         timeout: 5000
@@ -97,7 +97,7 @@ Window {
                         source: "qrc:/resource/svg/dropdown.svg"
                     }
                     ToolTip {
-                        visible: parent.hovered
+                        visible: parent.hovered  // qmllint disable type
                         text: qsTr("next match")
                         delay: 1000
                         timeout: 5000
@@ -134,7 +134,7 @@ Window {
                         interactiveInterpreter.interpret_script(script);
                     } else if (root.consoleType === OutputWindow.ConsoleType.JavaScript) {
                         root.showNormalMessage(`> ${script}`);
-                        Util.call(script)
+                        Util.call(script);
                     } else {
                         console.error(`Unknown console type: ${root.consoleType}, cannot execute script: ${script}`);
                     }
@@ -144,20 +144,21 @@ Window {
         }
     }
     InteractiveInterpreter {
+        // qmllint disable type import
         id: interactiveInterpreter
     }
     Connections {
-        target: outputWindowBridge
+        target: outputWindowBridge  // qmllint disable unqualified
         function onShowNormalMessage(msg) {
-            showNormalMessage(msg);
+            root.showNormalMessage(msg);
         }
 
         function onShowWarningMessage(msg) {
-            showWarningMessage(msg);
+            root.showWarningMessage(msg);
         }
 
         function onShowErrorMessage(msg) {
-            showErrorMessage(msg);
+            root.showErrorMessage(msg);
         }
     }
     Menu {
@@ -215,7 +216,7 @@ Window {
         }
     }
 
-    function showMessage(msg, msgType=OutputWindowComponents.OutputTextControl.MessageType.Normal) {
+    function showMessage(msg, msgType = OutputWindowComponents.OutputTextControl.MessageType.Normal) {
         outputText.addItem(msg, msgType);
     }
 
@@ -248,5 +249,4 @@ Window {
     function changeConsoleType(consoleType) {
         this.consoleType = consoleType;
     }
-
 }

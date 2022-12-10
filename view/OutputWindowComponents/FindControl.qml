@@ -9,7 +9,7 @@ Frame {
     signal nextClicked
     signal prevClicked
     signal closeClicked
-    signal findTextChanged(text: string)
+    signal findTextChanged(string text)
 
     RowLayout {
         anchors.fill: parent
@@ -18,10 +18,10 @@ Frame {
             id: textField
             Layout.fillWidth: true
             searchButtonVisible: false
-            onTextEdited: (text) => {
+            onTextEdited: text => {
                 root.findTextChanged(text);
             }
-            onAccepted: (text) => {
+            onAccepted: text => {
                 root.nextClicked();
             }
         }

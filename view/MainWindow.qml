@@ -15,14 +15,18 @@ ApplicationWindow {
             title: qsTr("&File")
             MenuItem {
                 text: qsTr("&Exit")
-                onTriggered: Qt.quit()
+                onTriggered: () => {
+                    Qt.quit();
+                }
             }
         }
         Menu {
             title: qsTr("&Developer")
             MenuItem {
                 text: qsTr("&Toggle Console")
-                onTriggered: toggleConsoleWindow()
+                onTriggered: () => {
+                    toggleConsoleWindow();
+                }
             }
             // MenuItem {
             //     text: qsTr("&Toggle JavaScript Console")
@@ -33,12 +37,11 @@ ApplicationWindow {
 
     Item {
         focus: true
-        Keys.onPressed: (event) => {
+        Keys.onPressed: event => {
             if (event.key === Qt.Key_QuoteLeft) {
                 toggleConsoleWindow();
             }
         }
-
     }
 
     OutputWindow {
@@ -48,7 +51,6 @@ ApplicationWindow {
     // JavaScriptConsole {
     //     id: jsConsoleWindow
     // }
-
     function toggleConsoleWindow() {
         consoleWindow.visible = !consoleWindow.visible;
     }

@@ -6,9 +6,9 @@ RowLayout {
     id: root
     property alias searchButtonVisible: searchButton.visible
     property alias text: textField.text
-    signal textEdited(text: string)
-    signal editingFinished(text: string)
-    signal accepted(text: string)
+    signal textEdited(string text)
+    signal editingFinished(string text)
+    signal accepted(string text)
 
     TextField {
         id: textField
@@ -32,7 +32,7 @@ RowLayout {
             source: "qrc:/resource/svg/search.svg"
         }
         ToolTip {
-            visible: parent.hovered
+            visible: parent.hovered  // qmllint disable type
             text: qsTr("search")
             delay: 1000
             timeout: 5000

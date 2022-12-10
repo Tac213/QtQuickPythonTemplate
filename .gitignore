@@ -23,3 +23,6 @@ resource_view_rc.py
 
 # baked shader files
 *.qsb
+
+# qmlformat file backup
+*.qml~

@@ -21,6 +21,7 @@ EXCLUDE_EXTS = (
     '.py',
     '.pyc',
     '.qrc',
+    '.qml~',
 )
 
 

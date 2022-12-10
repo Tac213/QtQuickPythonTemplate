@@ -1,12 +1,11 @@
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Layouts
 
 ScrollView {
     id: root
     enum MessageType {
         Normal = 1,
-        Warning = 2,
+        Warning,
         Error = 4
     }
 
@@ -24,7 +23,7 @@ ScrollView {
         wrapMode: Text.Wrap
         readOnly: true
 
-        onLinkActivated: (link) => {
+        onLinkActivated: link => {
             root.handleLinkActivated(link);
         }
     }
@@ -47,24 +46,18 @@ ScrollView {
         this.currentMessageType = msgType;
     }
 
-    function escapeHtml(unsafe)
-    {
-        return unsafe
-             .replace(/&/g, "&amp;")
-             .replace(/</g, "&lt;")
-             .replace(/>/g, "&gt;")
-             .replace(/"/g, "&quot;")
-             .replace(/'/g, "&#039;");
+    function escapeHtml(unsafe) {
+        return unsafe.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     }
 
-    function addItem(item, msgType=OutputTextControl.MessageType.Normal) {
+    function addItem(item, msgType = OutputTextControl.MessageType.Normal) {
         let colorName = 'grey';
         if (msgType === OutputTextControl.MessageType.Normal) {
             colorName = '#000000';
         } else if (msgType === OutputTextControl.MessageType.Warning) {
             colorName = '#ed7d31';
         } else if (msgType === OutputTextControl.MessageType.Error) {
-            colorName = '#ff0000'
+            colorName = '#ff0000';
         }
         let text = escapeHtml(item);
         text = _processText(text);
@@ -72,14 +65,15 @@ ScrollView {
         this._addText(text, msgType);
     }
 
-    function addHtml(htmlText, msgType=OutputTextControl.MessageType.Normal) {
+    function addHtml(htmlText, msgType = OutputTextControl.MessageType.Normal) {
         this._addText(htmlText, msgType);
     }
 
     function handleLinkActivated(link) {
         let url = decodeURI(link).replace(/<br\/>/g, '\n');
-        if (url.startsWith('#wrap:')) {
-            // TODO
+        if (url.startsWith('#wrap:'))
+        // TODO
+        {
         } else {
             url = url.substring(1);  // remove '#'
             const idx = url.lastIndexOf('.');
@@ -90,7 +84,7 @@ ScrollView {
         }
     }
 
-    function _addText(text, msgType=OutputTextControl.MessageType.Normal) {
+    function _addText(text, msgType = OutputTextControl.MessageType.Normal) {
         if (!text) {
             return;
         }
@@ -100,12 +94,12 @@ ScrollView {
         }
     }
 
-    function _processText(text, color='#1a77e6') {
+    function _processText(text, color = '#1a77e6') {
         const traceRE = /(File &quot;(.+?)&quot;, line (\d{1,5}), in (.+?))$/g;
         return text.replace(traceRE, (match, line, fileName, lineNumber) => {
-            const link = encodeURI(`${fileName.replace(/\\/g, '/')}.${lineNumber}`);
-            return line.replace(fileName, `<a href=\"#${link}\" style="color:${color};white-space:pre;">${fileName}</a>`)
-        }).replace(/\n/g, '<br/>');
+                const link = encodeURI(`${fileName.replace(/\\/g, '/')}.${lineNumber}`);
+                return line.replace(fileName, `<a href=\"#${link}\" style="color:${color};white-space:pre;">${fileName}</a>`);
+            }).replace(/\n/g, '<br/>');
     }
 
     function findText(text) {
@@ -122,7 +116,7 @@ ScrollView {
         this.find();
     }
 
-    function find(backward=false) {
+    function find(backward = false) {
         if (!this.searchRE) {
             return;
         }
@@ -157,7 +151,7 @@ ScrollView {
     }
 
     function findNext() {
-        this.find()
+        this.find();
     }
 
     function highlightText(text) {
@@ -167,18 +161,18 @@ ScrollView {
         }
         const findRE = new RegExp(text, 'gim');
         const currentText = textArea.getFormattedText(0, textArea.length);
-        const newText = currentText.replace(findRE, (findText) => {
-            return `<span style='background-color:#ffff00'>${findText}</span>`;
-        });
+        const newText = currentText.replace(findRE, findText => {
+                return `<span style='background-color:#ffff00'>${findText}</span>`;
+            });
         textArea.text = newText;
     }
 
     function disableAllHighlight() {
         const findRE = /background-color:#ffff00;/gm;
         const currentText = textArea.getFormattedText(0, textArea.length);
-        const newText = currentText.replace(findRE, (findText) => {
-            return '';
-        });
+        const newText = currentText.replace(findRE, findText => {
+                return '';
+            });
         textArea.text = newText;
     }
 }

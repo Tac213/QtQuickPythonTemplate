@@ -83,8 +83,8 @@ Window {
     }
 
     function jsCall(exp) {
-        const data = Util.call(exp)
+        const data = Util.call(exp);
         // insert the result at the beginning of the list
-        outputModel.insert(0, data)
+        outputModel.insert(0, data);
     }
 }
