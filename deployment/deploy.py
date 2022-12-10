@@ -38,9 +38,10 @@ def main(args):
     deploy_env.logger.info('variant: %s', args.variant)
     deploy_env.logger.info('distpath: %s', args.distpath)
     deploy_env.logger.info('workpath: %s', args.workpath)
-    if not resource_compiler.main():
+    returncode = resource_compiler.main()
+    if returncode:
         deploy_env.logger.error('Failed to compile resource. See logs above.')
-        sys.exit(-1)
+        sys.exit(returncode)
     if os.path.exists(args.workpath):
         deploy_env.logger.info('Workpath \'%s\' exists, pending to remove it.', args.workpath)
         shutil.rmtree(args.workpath)

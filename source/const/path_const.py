@@ -20,5 +20,8 @@ SOURCE_PATH = ROOT_PATH / 'source'
 VIEW_DIR = os.path.join(ROOT_DIR, 'view')
 VIEW_PATH = ROOT_PATH / 'view'
 
+SHADER_DIR = os.path.join(ROOT_DIR, 'shader')
+SHADER_PATH = ROOT_PATH / 'shader'
+
 LOG_DIR = os.path.join(ROOT_DIR, 'log')
 LOG_PATH = ROOT_PATH / 'log'

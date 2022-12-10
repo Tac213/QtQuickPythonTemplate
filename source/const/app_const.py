@@ -8,3 +8,4 @@ ORGANIZATION_NAME = 'Unknown'
 
 RESOURCE_PREFIX = 'resource'
 VIEW_PREFIX = 'view'
+SHADER_PREFIX = 'shader'

@@ -10,6 +10,9 @@
 *.txt text
 *.conf text
 *.md text
+*.vert text
+*.frag text
+*.comp text
 .pylintrc text
 .style.yapf text
 .yapfignore text
