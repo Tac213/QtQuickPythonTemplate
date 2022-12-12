@@ -35,7 +35,7 @@ exe = EXE(
     [],
     exclude_binaries=True,
     name=app_const.APP_NAME,
-    icon=path_const.APP_ICON_PATH if path_const.APP_ICON_PATH.endswith('.ico') else None,
+    icon=path_const.APP_ICON_PATH if path_const.APP_ICON_PATH.endswith('.icns') else None,
     debug=deploy_env.deployment_args.variant == 'debug',
     bootloader_ignore_signals=False,
     strip=False,
@@ -62,6 +62,6 @@ coll = COLLECT(
 app = BUNDLE(
     coll,
     name=f'{app_const.APP_NAME}.app',
-    icon=path_const.APP_ICON_PATH if path_const.APP_ICON_PATH.endswith('.ico') else None,
+    icon=path_const.APP_ICON_PATH if path_const.APP_ICON_PATH.endswith('.icns') else None,
     bundle_identifier=None,
 )
