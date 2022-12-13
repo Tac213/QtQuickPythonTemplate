@@ -107,6 +107,7 @@ ScrollView {
             this.searchRE = null;
             this.matchIndexStack.length = 0;
             this.currentSearchIndex = -1;
+            this.disableAllHighlight();
             return;
         }
         this.highlightText(text);
