@@ -1,6 +1,5 @@
 {
     "files.associations": {
-        ".style.yapf": "ini",
         "**.spec": "python"
     },
     "files.exclude": {
@@ -14,14 +13,13 @@
         "**/venv": true,
         "**/__pycache__": true
     },
-    "python.formatting.provider": "yapf",
+    "python.formatting.provider": "none",
     "python.linting.flake8Enabled": false,
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "python.analysis.typeCheckingMode": "off",
-    "python.analysis.extraPaths": ["source", "deployment"],
     "[python]": {
-        "editor.defaultFormatter": "ms-python.python",
+        "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": true
     },
     "[javascript]": {
@@ -30,5 +28,6 @@
     },
     "triggerTaskOnSave.tasks": {
         "Format current qml file": ["*.qml"]
-    }
+    },
+    "cmake.configureOnOpen": false
 }

@@ -27,8 +27,8 @@ source .venv/bin/activate
 # for Winows Git Bash, run the following command to activate venv
 # source .venv/Scripts/activate
 
-# install site-packages
-pip3 install -r requirements.txt
+# install packages
+pip3 install -e .[dev]
 # generate snake_case and true_property pyi for VSCode
 pyside6-genpyi all --feature snake_case true_property
 # deactivate venv
@@ -41,6 +41,8 @@ After opening the folder, install the following extensions:
 
 -   [ms-python.python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 -   [ms-python.vscode-pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
+-   [ms-python.pylint](https://marketplace.visualstudio.com/items?itemName=ms-python.pylint)
+-   [ms-python.black-formatter](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter)
 -   [seanwu.vscode-qt-for-python](https://marketplace.visualstudio.com/items?itemName=seanwu.vscode-qt-for-python)
 -   [esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 -   [Gruntfuggly.triggertaskonsave](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.triggertaskonsave)
@@ -54,10 +56,12 @@ Finally, press `F5`. The application should be launched in debug mode.
 ## Usage
 
 1. Clone or download this repository
-2. Rename the root folder
-3. Change the `APP_NAME` and `ORGANIZATION_NAME` variable in `source/const/app_const.py`
-4. Change the icon in `resouce/icon.jpg`, change it to a `.ico` format icon will be better(for deployment)
-5. Upgrade dependencies: PySide6, pylint, yapf, pyinstaller
+2. Rename the root folder and the `src/qt_quick_python_template`
+3. Search `qt_quick_python_template` in VSCode and replace all the strings with your own project name
+4. Change the `APP_NAME` and `ORGANIZATION_NAME` variable in `src/qt_quick_python_template/const/app_const.py`
+5. Run `pip3 install -e .[dev]` to apply the changes above
+6. Change the icon in `resouce/icon.jpg`, change it to a `.ico` format icon will be better(for deployment)
+7. If you clone the repository with git, remove the `.git` directory and regenerate it with `git init`
 
 ## Deployment
 
@@ -65,4 +69,4 @@ The major 3 operate systems: Windows, MacOS, Linux(Ubuntu / Debian), is supporte
 
 To deploy the application, simply press `Ctrl + P` in VSCode, then enter `task Deploy(Release)`. If the task is performed successfully, the application will be deployed under: `${workspaceFolder}/deployment/dist`.
 
-See spec files under `${workspaceFolder}/deployment/spec` for more information.
+See spec files under `${workspaceFolder}/src/qt_quick_python_tools/spec` for more information.

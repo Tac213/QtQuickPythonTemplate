@@ -8,7 +8,7 @@
             "windows": {
                 "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
             },
-            "args": ["deployment/deploy.py"],
+            "args": ["-m", "qt_quick_python_tools.deploy"],
             "presentation": {
                 "echo": true,
                 "reveal": "always",
@@ -28,7 +28,7 @@
             "windows": {
                 "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
             },
-            "args": ["deployment/deploy.py", "--variant", "debug"],
+            "args": ["-m", "qt_quick_python_tools.deploy", "--variant", "debug"],
             "presentation": {
                 "echo": true,
                 "reveal": "always",
@@ -48,7 +48,7 @@
             "windows": {
                 "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
             },
-            "args": ["deployment/resource_compiler.py"],
+            "args": ["-m", "qt_quick_python_tools.resource_compiler"],
             "presentation": {
                 "echo": true,
                 "reveal": "always",
@@ -58,10 +58,7 @@
                 "clear": true
             },
             "options": {
-                "cwd": "${workspaceFolder}",
-                "env": {
-                    "PYTHONPATH": "${workspaceFolder}/source"
-                }
+                "cwd": "${workspaceFolder}"
             }
         },
         {
@@ -71,7 +68,7 @@
             "windows": {
                 "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
             },
-            "args": ["deployment/shader_baker.py"],
+            "args": ["-m", "qt_quick_python_tools.shader_baker"],
             "presentation": {
                 "echo": true,
                 "reveal": "always",
@@ -81,10 +78,7 @@
                 "clear": true
             },
             "options": {
-                "cwd": "${workspaceFolder}",
-                "env": {
-                    "PYTHONPATH": "${workspaceFolder}/source"
-                }
+                "cwd": "${workspaceFolder}"
             }
         },
         {
@@ -94,7 +88,7 @@
             "windows": {
                 "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
             },
-            "args": ["deployment/qml_formatter.py", "--all"],
+            "args": ["-m", "qt_quick_python_tools.qml_formatter", "--all"],
             "presentation": {
                 "echo": true,
                 "reveal": "always",
@@ -104,10 +98,7 @@
                 "clear": true
             },
             "options": {
-                "cwd": "${workspaceFolder}",
-                "env": {
-                    "PYTHONPATH": "${workspaceFolder}/source"
-                }
+                "cwd": "${workspaceFolder}"
             }
         },
         {
@@ -117,7 +108,7 @@
             "windows": {
                 "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe"
             },
-            "args": ["deployment/qml_formatter.py", "${file}"],
+            "args": ["-m", "qt_quick_python_tools.qml_formatter", "${file}"],
             "presentation": {
                 "echo": true,
                 "reveal": "silent",
@@ -128,10 +119,7 @@
                 "clear": true
             },
             "options": {
-                "cwd": "${workspaceFolder}",
-                "env": {
-                    "PYTHONPATH": "${workspaceFolder}/source"
-                }
+                "cwd": "${workspaceFolder}"
             }
         }
     ]

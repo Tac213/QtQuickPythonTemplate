@@ -5,13 +5,10 @@
             "name": "Launch Debug",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/launcher.py",
+            "module": "qt_quick_python_template",
             "console": "integratedTerminal",
             "justMyCode": false,
-            "preLaunchTask": "Compile Qt Resource",
-            "env": {
-                "PYTHONPATH": "${workspaceFolder}/source"
-            }
+            "preLaunchTask": "Compile Qt Resource"
         }
     ]
 }

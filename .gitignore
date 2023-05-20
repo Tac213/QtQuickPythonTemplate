@@ -26,3 +26,5 @@ resource_view_rc.py
 
 # qmlformat file backup
 *.qml~
+
+*.egg-info/

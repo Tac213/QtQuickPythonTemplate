@@ -2,7 +2,7 @@
 ignore=
 	resource_view_rc.py,
 
-init-hook='import sys; sys.path.append("source")'
+init-hook=''
 
 [BASIC]
 
