@@ -6,12 +6,22 @@ import sys
 import os
 import pathlib
 
+import qt_quick_python_template
+
 ROOT_DIR = (
-    getattr(sys, "_MEIPASS")
+    getattr(sys, "_MEIPASS")  # PyInstaller
     if getattr(sys, "frozen", False)
-    else os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+    else os.path.normpath(os.path.join(os.path.dirname(__file__), "..", ".."))  # Nuitka
+    if hasattr(qt_quick_python_template, "__compiled__")
+    else os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))  # Source code
 )
-ROOT_PATH = pathlib.Path(getattr(sys, "_MEIPASS")) if getattr(sys, "frozen", False) else pathlib.Path(__file__).parent.parent.parent
+ROOT_PATH = (
+    pathlib.Path(getattr(sys, "_MEIPASS"))  # PyInstaller
+    if getattr(sys, "frozen", False)
+    else pathlib.Path(__file__).parent.parent.parent  # Nuitka
+    if hasattr(qt_quick_python_template, "__compiled__")
+    else pathlib.Path(__file__).parent.parent.parent.parent  # Source code
+)
 
 RESOURCE_DIR = os.path.join(ROOT_DIR, "resource")
 RESOURCE_PATH = ROOT_PATH / "resource"

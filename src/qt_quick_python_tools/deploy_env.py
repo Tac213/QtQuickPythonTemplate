@@ -20,7 +20,8 @@ deployment_path = os.path.join(root_path, "src", "qt_quick_python_tools")
 
 all_source_modules = list(deploy_utils.iterate_all_modules(source_path))
 
-scripts = [os.path.join(source_path, "__main__.py")]
+entry_script = os.path.join(source_path, "__main__.py")
+scripts = [entry_script]
 pathex = [source_path]
 hiddenimports = [os.path.splitext(resource_compiler.PY_RC_FILE_NAME)[0]]
 hiddenimports.extend(all_source_modules)

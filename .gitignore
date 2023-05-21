@@ -16,6 +16,8 @@ venv
 # deployment files
 deployment/build/
 deployment/dist/
+deployment/__main__.build/
+deployment/__main__.dist/
 
 # auto-generated resource files
 resource_view.qrc

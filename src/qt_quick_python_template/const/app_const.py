@@ -3,6 +3,7 @@
 # contact: cookiezhx@163.com
 
 APP_NAME = "QtQuickPythonTemplate"
+APP_VERSION = "1.0.0"
 APP_ICON = ":/resource/icon.jpg"
 ORGANIZATION_NAME = "Unknown"
 

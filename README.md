@@ -57,7 +57,7 @@ Finally, press `F5`. The application should be launched in debug mode.
 
 1. Clone or download this repository
 2. Rename the root folder and the `src/qt_quick_python_template`
-3. Search `qt_quick_python_template` in VSCode and replace all the strings with your own project name
+3. Search `qt_quick_python_template` and `QtQuickPythonTemplate` in VSCode and replace all the strings with your own project name
 4. Change the `APP_NAME` and `ORGANIZATION_NAME` variable in `src/qt_quick_python_template/const/app_const.py`
 5. Run `pip3 install -e .[dev]` to apply the changes above
 6. Change the icon in `resouce/icon.jpg`, change it to a `.ico` format icon will be better(for deployment)
@@ -67,6 +67,11 @@ Finally, press `F5`. The application should be launched in debug mode.
 
 The major 3 operate systems: Windows, MacOS, Linux(Ubuntu / Debian), is supported.
 
-To deploy the application, simply press `Ctrl + P` in VSCode, then enter `task Deploy(Release)`. If the task is performed successfully, the application will be deployed under: `${workspaceFolder}/deployment/dist`.
+To deploy the application, simply press `Ctrl + P` in VSCode, then:
+
+-   enter `task Deploy(Release PyInstaller)`, if the task is performed successfully, the application will be deployed under: `${workspaceFolder}/deployment/dist`
+-   enter `task Deploy(Release Nuitka)`, if the task is performed successfully, the application will be deployed under: `${workspaceFolder}/deployment/__main__.dist`
 
 See spec files under `${workspaceFolder}/src/qt_quick_python_tools/spec` for more information.
+
+> Deployment using Nuitka excludes unused Qt modules, remove the exclusions in `${workspaceFolder}/src/qt_quick_python_tools/spec/nuitka_spec.py` if you want to use them.

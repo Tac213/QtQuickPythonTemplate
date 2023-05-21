@@ -21,6 +21,7 @@ dev = [
     "pylint",
     "black",
     "pyinstaller",
+    "nuitka",
 ]
 
 [tool.black]
