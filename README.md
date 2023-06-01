@@ -11,6 +11,8 @@ A Template repository for QtQuick Python.
 
 Recommended IDE: [Visual Studio Code](https://code.visualstudio.com/)
 
+> If you prefer PyCharm, switch to branch: pycharm
+
 To setup Development Environment, run the following commands:
 
 ```bash
