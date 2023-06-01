@@ -9,9 +9,9 @@ A Template repository for QtQuick Python.
 
 ## Setup Development Environment
 
-Recommended IDE: [Visual Studio Code](https://code.visualstudio.com/)
+Recommended IDE: [PyCharm](https://www.jetbrains.com/pycharm/)
 
-> If you prefer PyCharm, switch to branch: pycharm
+> If you prefer VSCode, switch to branch: main
 
 To setup Development Environment, run the following commands:
 
@@ -31,35 +31,21 @@ source .venv/bin/activate
 
 # install packages
 pip3 install -e .[dev]
-# generate snake_case and true_property pyi for VSCode
+# generate snake_case and true_property pyi for PyCharm
 pyside6-genpyi all --feature snake_case true_property
 # deactivate venv
 deactivate
-# open current folder using VSCode
-code .
 ```
 
-After opening the folder, install the following extensions:
+Then open current folder with PyCharm. After that, the interpreter under `.venv` folder should be selected automaticaly. If not, select it manually.
 
--   [ms-python.python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
--   [ms-python.vscode-pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
--   [ms-python.pylint](https://marketplace.visualstudio.com/items?itemName=ms-python.pylint)
--   [ms-python.black-formatter](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter)
--   [seanwu.vscode-qt-for-python](https://marketplace.visualstudio.com/items?itemName=seanwu.vscode-qt-for-python)
--   [esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
--   [Gruntfuggly.triggertaskonsave](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.triggertaskonsave)
-
-These extensions have been written in `.vscode/extensions.json`, you can also click `Yes` when VSCode ask you whether to install the recommended extensions, which makes it easier to install all the above extensions.
-
-The next step is to select the interpreter under `.venv` folder as the development interpreter. Simply press `Ctrl + Shift + P`, then enter `Python: Select Interpreter` command.
-
-Finally, press `F5`. The application should be launched in debug mode.
+Finally, select run configuration: `Launch Application`, then press run or debug. The application should be launched.
 
 ## Usage
 
 1. Clone or download this repository
 2. Rename the root folder and the `src/qt_quick_python_template`
-3. Search `qt_quick_python_template` and `QtQuickPythonTemplate` in VSCode and replace all the strings with your own project name
+3. Search `qt_quick_python_template` and `QtQuickPythonTemplate` in PyCharm and replace all the strings with your own project name
 4. Change the `APP_NAME` and `ORGANIZATION_NAME` variable in `src/qt_quick_python_template/const/app_const.py`
 5. Run `pip3 install -e .[dev]` to apply the changes above
 6. Change the icon in `resouce/icon.jpg`, change it to a `.ico` format icon will be better(for deployment)
@@ -69,10 +55,10 @@ Finally, press `F5`. The application should be launched in debug mode.
 
 The major 3 operate systems: Windows, MacOS, Linux(Ubuntu / Debian), is supported.
 
-To deploy the application, simply press `Ctrl + P` in VSCode, then:
+To deploy the application, run following configuration:
 
--   enter `task Deploy(Release PyInstaller)`, if the task is performed successfully, the application will be deployed under: `${workspaceFolder}/deployment/dist`
--   enter `task Deploy(Release Nuitka)`, if the task is performed successfully, the application will be deployed under: `${workspaceFolder}/deployment/__main__.dist`
+-   `Deploy(Release PyInstaller)`, if the task is performed successfully, the application will be deployed under: `${workspaceFolder}/deployment/dist`
+-   `Deploy(Release Nuitka)`, if the task is performed successfully, the application will be deployed under: `${workspaceFolder}/deployment/__main__.dist`
 
 See spec files under `${workspaceFolder}/src/qt_quick_python_tools/spec` for more information.
 
