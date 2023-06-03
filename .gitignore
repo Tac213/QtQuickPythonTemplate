@@ -18,6 +18,7 @@ deployment/build/
 deployment/dist/
 deployment/__main__.build/
 deployment/__main__.dist/
+deployment/__main__.app/
 
 # auto-generated resource files
 resource_view.qrc
@@ -30,3 +31,5 @@ resource_view_rc.py
 *.qml~
 
 *.egg-info/
+
+.DS_Store
